@@ -1,0 +1,20 @@
+# build-doctor
+
+> Automatic test failure fixer for claude-code-factory
+
+## What it does
+When a factory build fails `make test`, build-doctor reads the error log from SQLite, clones the repo, sends errors + source code to Claude Code CLI, applies fixes, and retries until tests pass. After 3 failed attempts, marks the build as permanently failed.
+
+## Commands
+- `build-doctor fix` — fix all failed builds
+- `build-doctor fix --name <repo>` — fix one repo
+- `build-doctor stats` — show fix success rates
+- `build-doctor serve` — HTTP monitoring API
+
+## Integration
+Part of the claude-code-factory autonomous software pipeline. Reads from the shared `build_queue` SQLite table and writes status updates back.
+
+## Source
+- Repository: https://github.com/timholm/build-doctor
+- Language: Go
+- License: MIT
